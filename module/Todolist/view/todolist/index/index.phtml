@@ -1,0 +1,29 @@
+<div ng-app="TodoApp">
+    <div id="todoapp" ng-controller="IndexCtrl">
+        <header>
+            <h1>Todos by Angular.js</h1>
+            <input id="new-todo" type="text" ng-model="taskText"  size="30"
+                   placeholder="What needs to be done?" ng-keyup="add()"/>
+        </header>
+
+        <section id="main" style="display: block;">
+            <ul id="todo-list" class="unstyled">
+                <li ng-repeat="task in tasks" ng-dblclick="toggleEditMode()">
+                    <div class="view">
+                        <input type="checkbox" ng-model="task.done" ng-click="editDone(task)"/>
+                        <span class="done-{{task.done}}" >{{task.text}}</span>
+                    </div>
+                    <input class="edit" type="text" ng-model="task.text" ng-keyup="editOnEnter(task)"/>
+                </li>
+            </ul>
+        </section>
+
+        <footer style="display: block;">
+            <div class="todo-count">{{remaining()}} of {{tasks.length}} remaining</div>
+            <a id="clear-completed" ng-click="clear()" ng-show="hasDone()">
+                Clear <span >{{(tasks.length - remaining())}} {{itemText()}}</span>.
+            </a>
+        </footer>
+
+    </div>
+</div>

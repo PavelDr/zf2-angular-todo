@@ -1,4 +1,6 @@
 <?php
+define('APPLICATION_DIR', dirname(__DIR__));
+
 /**
  * This makes our life easier when dealing with paths. Everything is relative
  * to the application root now.
